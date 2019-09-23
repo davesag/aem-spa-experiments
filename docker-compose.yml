@@ -1,0 +1,15 @@
+version: "3"
+volumes:
+  aem-data:
+    driver: local
+
+services:
+  aem-author:
+    image: pawangonnakuti/aem-author:latest
+    ports:
+      - 4040:4040
+    volumes:
+      - aem-data:/opt/aem-config
+      - aem-data:/opt/aem/ctx-quickstart/logs
+    healthcheck:
+      test: "exit 0"

@@ -4,7 +4,20 @@ Experimenting with Adobe Experience Manager and Single Page Apps
 
 ## See Also
 
-- [adobe experience manager](https://helpx.adobe.com/support/experience-manager/6-5.html)
+- [Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager/6-5.html)
+- [AEM Single Page Editor](https://helpx.adobe.com/experience-manager/kt/eseminars/gems/aem-spa-editor.html) — watch the video. (approx 1 hour)
+- [42 Notes - AEM SPA Editor](https://42.industrieit.com/pages/viewpage.action?spaceKey=Partners&title=AEM+SPA+Editor)
+- [AEM Author in Docker](https://hub.docker.com/r/pawangonnakuti/aem-author)
+- 
+## Run AEM (Authoring Environment)
+
+```sh
+docker-compose up -d
+```
+
+Then point your browser at [localhost:4040](https://localhost:4040)
+
+The first time you do this you'll be presented with a screen requesting your `customer name` and `license key`.
 
 ## Development
 
