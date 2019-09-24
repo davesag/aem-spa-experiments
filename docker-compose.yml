@@ -1,7 +1,10 @@
 version: "3"
-volumes:
-  aem-data:
-    driver: local
+# volumes:
+#   aem-data:
+#     driver: local
+#     driver_opts:
+#       o: bind
+#       type: none
 
 services:
   aem-author:
@@ -9,7 +12,7 @@ services:
     ports:
       - 4040:4040
     volumes:
-      - aem-data:/opt/aem-config
-      - aem-data:/opt/aem/ctx-quickstart/logs
+      - ./config:/opt/aem-config
+      - ./logs:/opt/aem/ctx-quickstart/logs
     healthcheck:
       test: "exit 0"
