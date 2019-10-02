@@ -16,3 +16,13 @@ services:
       - ./logs:/opt/aem/ctx-quickstart/logs
     healthcheck:
       test: "exit 0"
+
+  aem-publish:
+    image: pawangonnakuti/aem-publish:latest
+    ports:
+      - 8080:4040
+    volumes:
+      - ./config:/opt/aem-config
+      - ./logs:/opt/aem/ctx-quickstart/logs
+    healthcheck:
+      test: "exit 0"
