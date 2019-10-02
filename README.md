@@ -8,8 +8,10 @@ Experimenting with Adobe Experience Manager and Single Page Apps
 - [AEM Single Page Editor](https://helpx.adobe.com/experience-manager/kt/eseminars/gems/aem-spa-editor.html) — watch the video. (approx 1 hour)
 - [42 Notes - AEM SPA Editor](https://42.industrieit.com/pages/viewpage.action?spaceKey=Partners&title=AEM+SPA+Editor)
 - [AEM Author in Docker](https://hub.docker.com/r/pawangonnakuti/aem-author)
--
-## Run AEM (Authoring Environment)
+- [SPA Walkthrough](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/spa-walkthrough.html)
+- [AEM Example 'we retail journal'](https://github.com/adobe/aem-sample-we-retail-journal)
+
+## Run AEM (Authoring and Publishing Environments)
 
 in `/config` create a file called `license.properties` with the following content:
 
@@ -26,9 +28,14 @@ license.downloadID=YOUR LICENSE ID GOES HERE
 docker-compose up -d
 ```
 
-Then point your browser at [localhost:4040](https://localhost:4040)
+The first time you run these services they'll take a long time (> 5 minutes) to start.
 
-You can then log in with `admin` and `admin`
+## The services
+
+- [Authoring: localhost:4040](https://localhost:4040)
+- [Publishing: localhost:8080](https://localhost:8080)
+
+You can log in to either with `admin` and `admin`
 
 ## Development
 
