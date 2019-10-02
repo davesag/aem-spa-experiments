@@ -4,10 +4,11 @@ Experimenting with Adobe Experience Manager and Single Page Apps
 
 ## See Also
 
+- [42 — AEM SPA Editor](https://42.industrieit.com/pages/viewpage.action?spaceKey=Partners&title=AEM+SPA+Editor)
 - [Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager/6-5.html)
 - [AEM Single Page Editor](https://helpx.adobe.com/experience-manager/kt/eseminars/gems/aem-spa-editor.html) — watch the video. (approx 1 hour)
-- [42 Notes - AEM SPA Editor](https://42.industrieit.com/pages/viewpage.action?spaceKey=Partners&title=AEM+SPA+Editor)
 - [AEM Author in Docker](https://hub.docker.com/r/pawangonnakuti/aem-author)
+- [AEM Publish in Docker](https://hub.docker.com/r/pawangonnakuti/aem-publish)
 - [SPA Walkthrough](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/spa-walkthrough.html)
 - [AEM Example 'we retail journal'](https://github.com/adobe/aem-sample-we-retail-journal)
 
@@ -47,7 +48,7 @@ You can log in to either with `admin` and `admin`
 
 ### Prerequisites
 
-- [NodeJS](htps://nodejs.org), version 10.16.3 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
+- [NodeJS](https://nodejs.org), version 10.16.3 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
 - [Docker](https://www.docker.com) (Use [Docker for Mac](https://docs.docker.com/docker-for-mac/), not the homebrew version)
 
 ## Contributing
