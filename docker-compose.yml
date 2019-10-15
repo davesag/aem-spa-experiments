@@ -10,7 +10,7 @@ services:
   aem-author:
     image: pawangonnakuti/aem-author:latest
     ports:
-      - 4040:4040
+      - 4502:4040
     volumes:
       - ./config:/opt/aem-config
       - ./logs:/opt/aem/ctx-quickstart/logs
@@ -20,7 +20,7 @@ services:
   aem-publish:
     image: pawangonnakuti/aem-publish:latest
     ports:
-      - 8080:4040
+      - 4503:4040
     volumes:
       - ./config:/opt/aem-config
       - ./logs:/opt/aem/ctx-quickstart/logs
