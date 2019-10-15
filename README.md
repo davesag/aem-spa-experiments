@@ -73,12 +73,7 @@ You can log in to either with `admin` and `admin`
 
 We are going to build a `react` app.
 
-Create a new folder for your project
-
-    mkdir spa-example
-    cd spa-example
-
-Then run the maven archetype.
+Run the maven archetype.
 
     mvn archetype:generate \
      -DarchetypeCatalog=local \
@@ -86,9 +81,13 @@ Then run the maven archetype.
      -DarchetypeArtifactId=aem-spa-project-archetype  \
      -DarchetypeVersion=1.1.0
 
-The script will ask you some questions. For the `groupId` use `spa-example` and for the `artifactId` use `spa-example.example`.
+The script will ask you some questions. For the `groupId` use `spa` and for the `artifactId` use `spa.mysamplespa`.
 
-The resulting shell of a react app can be found in `spa-example.example/react-app/`
+Then
+
+    cd spa.mysamplespa
+
+The resulting shell of a react app can be found in `spa.mysamplespa/react-app/`
 
 Now, assuming you are running your local versions of AEM Author and Publisher (as per above)
 
@@ -100,6 +99,11 @@ Now, assuming you are running your local versions of AEM Author and Publisher (a
    - Supported Headers: `Authorization`
    - Allowed Methods: `OPTIONS`
 
+Now run
+
+    mvn clean install
+
+This will generate all of the artefacts needed to install your new single page app into AEM.
 
 ## Contributing
 
