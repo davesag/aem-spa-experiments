@@ -50,7 +50,7 @@ You can log in to either with `admin` and `admin`
 ### Prerequisites
 
 - [NodeJS](https://nodejs.org) version 10.16.3 or better (I use [`nvm`](https://github.com/creationix/nvm) to manage Node versions — `brew install nvm`.)
-- [Docker](https://www.docker.com) (Use [Docker for Mac](https://docs.docker.com/docker-for-mac/), not the homebrew version)
+- [Docker](https://www.docker.com) (Use [Docker for Mac](https://docs.docker.com/docker-for-mac/), not the homebrew version) Set docker's memory to at least 4GB of RAM and 1GB of Swap Space. AEM is a pig.
 - [Java](https://www.java.com/en/download/) version 1.8 or better and be sure to set the `JAVA_HOME` environment variable.  To see if it's set check
 
       echo $JAVA_HOME
@@ -99,11 +99,78 @@ Now, assuming you are running your local versions of AEM Author and Publisher (a
    - Supported Headers: `Authorization`
    - Allowed Methods: `OPTIONS`
 
-Now run
+### Installing your Single Page App
 
-    mvn clean install
+Check that AEM is running by
 
-This will generate all of the artefacts needed to install your new single page app into AEM.
+1. Check the logs
+
+        docker-compose logs -f
+
+2. Test you can access the apps.
+
+   - [Author: localhost:4502](http://localhost:4502) and log in if necessary.
+   - [Publish: localhost:4503](http://localhost:4503) should take you to the default example app.
+
+3. Install the Single Page App into the AEM Author instance
+
+        mvn clean install -PautoInstallSinglePackage
+
+    **Note**: To install the Single Page App into the AEM Publish instance
+
+        mvn clean install -PautoInstallSinglePackagePublish
+
+    **Note**: You can also use the `-Dbuild.environment=":production"` flag to install the production version of the app.
+
+4. Open the app. [localhost:4502/editor.html/content/spa.mysamplespa/en.html](http://localhost:4502/editor.html/content/mysamplespa/en.html)
+
+You should see a page like this:
+![Screen Snap](images/mysamplespa-screensnap.png)
+Use the settings menu at the top left to select 'View as published' and you should get a page like this:
+![Screen Snap](images/mysamplespa-published-screensnap.png)
+### Running the development server
+
+From within the `spa.mysamplespa/react-app` folder run:
+
+    npm start
+
+This will launch Chrome and take it to `localhost:3000` which, due to a bug in the app, does not actually work (see [github.com/adobe/aem-spa-project-archetype/issues/113](https://github.com/adobe/aem-spa-project-archetype/issues/113)).
+![Screen Snap](images/mysampleapp-development-server-borked.png)
+Point Chrome at [localhost:3000/content/mysamplespa/en/home.html](http://localhost:3000/content/mysamplespa/en/home.html) instead to see your app.
+![Screen Snap](images/mysampleapp-development-server-working.png)
+
+**Note**: If you don't see anything be sure you set the `CORS` configuration as described above.
+
+### Making changes
+
+You can now develop your app in the same manner as any normal React app.
+
+## Conclusions
+
+Developing SPAs with AEM is very much like trying to strap a Tesla's wheels onto an old Holden and expecting it to become a self-driving electric car.
+
+The development process is slow, resource intensive, buggy, and riddled with security issues.
+
+It's possible to do, and you could get some passable results with a huge amount of effort, but you'd be better off _NOT_ installing the app into AEM but instead using AEM as a headless CMS and just developing a standalone React app that makes REST queries to AEM for content.
+
+- set up is extremely complex (took me several days to get a default app installed and working)
+- very resource intensive
+
+  - java
+  - maven
+  - docker (optional but advised) configured with a minimum of 4GB of RAM
+
+- the default maven app template
+
+  - has many outstanding issues and pull requests in GitHub
+  - generates poorly written and buggy code
+  - does not follow modern React best practices
+  - requires a whole lot of proprietary Adobe libraries which don't appear to have been updated in a while
+  - running `npm audit`
+
+        found 1085 vulnerabilities (63 low, 8 moderate, 1012 high, 2 critical) in 37537 scanned packages
+
+- the development process is error prone and overly complex.
 
 ## Contributing
 
